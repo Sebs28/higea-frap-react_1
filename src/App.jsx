@@ -11,7 +11,6 @@ import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-
 import logo from './assets/logo.jpeg';
 import FormularioContacto from './components/FormularioContacto';
 import BuscadorFiltrado from './components/BuscadorFiltrado';
-import GaleriaImagenes from './components/GaleriaImagenes';
 import RegistroLogin from './components/RegistroLogin';
 import SistemaComentarios from './components/SistemaComentarios';
 
@@ -48,7 +47,7 @@ function App() {
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
   const [emailLogueado, setEmailLogueado] = useState('');
   const [mostrarLanding, setMostrarLanding] = useState(false);
-  const [mensajeSesion, setMensajeSesion] = useState({ texto: '', tipo: '' }); // Nuevo estado para toast
+  const [mensajeSesion, setMensajeSesion] = useState({ texto: '', tipo: '' });
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -89,7 +88,6 @@ function App() {
     setTimeout(() => setMensajeSesion({ texto: '', tipo: '' }), 3000);
   };
 
-  // Volver arriba
   useEffect(() => {
     const handleScrollButton = () => {
       const btn = document.getElementById('btnVolverArriba');
@@ -125,7 +123,7 @@ function App() {
         </div>
       )}
 
-      {/* NAVBAR (igual) */}
+      {/* HEADER */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/98 shadow-md' : 'bg-white/95 backdrop-blur-md'}`}>
         <div className="container mx-auto px-5 lg:px-8 py-3 flex justify-between items-center">
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollTo('inicio')}>
@@ -268,23 +266,50 @@ function App() {
           </div>
         </section>
 
-        {/* SISTEMA FRAP */}
+        {/* ==================== SISTEMA FRAP (ACTUALIZADO) ==================== */}
         <section id="sistema-frap" className="py-20 bg-gradient-to-br from-[#EFF7F5] to-white">
           <div className="container mx-auto px-5 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <span className="bg-[#1A6F5E]/10 text-[#1A6F5E] px-4 py-1 rounded-full text-sm font-semibold">Formato FRAP Digital</span>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-4 mb-5">Sistema especializado en reportes de Atención Prehospitalaria</h2>
-                <p className="text-gray-600 mb-4">El sistema FRAP (Formato de Registro de Atención Prehospitalaria) digital permite documentar de manera estandarizada, rápida y segura toda la atención médica de urgencias.</p>
+                <p className="text-gray-600 mb-4">El sistema FRAP digitaliza el registro de atención prehospitalaria, permitiendo documentar urgencias médicas de forma rápida, estandarizada y segura, desde el primer contacto hasta el traslado hospitalario.</p>
                 <ul className="space-y-3">
-                  <li className="flex gap-3"><i className="fas fa-check-circle text-[#1A6F5E] mt-1"></i><span>Reducción de errores de legibilidad y omisión de datos críticos.</span></li>
-                  <li className="flex gap-3"><i className="fas fa-check-circle text-[#1A6F5E] mt-1"></i><span>Interoperabilidad con estándares HL7 e ISO 27001.</span></li>
-                  <li className="flex gap-3"><i className="fas fa-check-circle text-[#1A6F5E] mt-1"></i><span>Generación automática de estadísticas operativas.</span></li>
+                  <li className="flex gap-3">
+                    <i className="fas fa-check-circle text-[#1A6F5E] mt-1"></i>
+                    <span>Elimina errores de legibilidad y omisión de datos críticos.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <i className="fas fa-check-circle text-[#1A6F5E] mt-1"></i>
+                    <span>Interoperable con estándares HL7 e ISO 27001 para seguridad total.</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <i className="fas fa-check-circle text-[#1A6F5E] mt-1"></i>
+                    <span>Genera estadísticas operativas automáticas para la toma de decisiones.</span>
+                  </li>
                 </ul>
-                <div className="mt-8 flex flex-wrap gap-4 justify-center">
-                  <div className="bg-white rounded-xl shadow p-3 text-center min-w-[100px] flex-1 max-w-[120px]"><FontAwesomeIcon icon={faDatabase} className="text-2xl text-[#0F3B5C] mb-1 block" /><p className="font-bold text-xs">Backend robusto</p></div>
-                  <div className="bg-white rounded-xl shadow p-3 text-center min-w-[100px] flex-1 max-w-[120px]"><FontAwesomeIcon icon={faMobileAlt} className="text-2xl text-[#0F3B5C] mb-1 block" /><p className="font-bold text-xs">Responsive</p></div>
-                  <div className="bg-white rounded-xl shadow p-3 text-center min-w-[100px] flex-1 max-w-[120px]"><FontAwesomeIcon icon={faLock} className="text-2xl text-[#0F3B5C] mb-1 block" /><p className="font-bold text-xs">Confidencialidad</p></div>
+                <div className="mt-6">
+                  <button 
+                    onClick={() => scrollTo('contacto')} 
+                    className="bg-[#1A6F5E] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0F3B5C] transition shadow-md hover:shadow-lg inline-flex items-center gap-2"
+                  >
+                    <i className="fas fa-file-alt"></i> Ver descripción
+                  </button>
+                  <p className="text-xs text-gray-400 mt-2">Conoce cómo el sistema FRAP optimiza la atención prehospitalaria</p>
+                </div>
+                <div className="mt-8 flex flex-wrap gap-4 justify-start">
+                  <div className="bg-white rounded-xl shadow p-3 text-center min-w-[100px] flex-1 max-w-[120px]">
+                    <FontAwesomeIcon icon={faDatabase} className="text-2xl text-[#0F3B5C] mb-1 block" />
+                    <p className="font-bold text-xs">Backend robusto</p>
+                  </div>
+                  <div className="bg-white rounded-xl shadow p-3 text-center min-w-[100px] flex-1 max-w-[120px]">
+                    <FontAwesomeIcon icon={faMobileAlt} className="text-2xl text-[#0F3B5C] mb-1 block" />
+                    <p className="font-bold text-xs">Responsive</p>
+                  </div>
+                  <div className="bg-white rounded-xl shadow p-3 text-center min-w-[100px] flex-1 max-w-[120px]">
+                    <FontAwesomeIcon icon={faLock} className="text-2xl text-[#0F3B5C] mb-1 block" />
+                    <p className="font-bold text-xs">Confidencialidad</p>
+                  </div>
                 </div>
               </div>
               <div className="bg-white p-6 rounded-3xl shadow-2xl border border-gray-100">
@@ -294,7 +319,11 @@ function App() {
                   <p className="text-gray-300">[INFO] API RESTful endpoints activos</p>
                   <div className="mt-3 bg-gray-700 p-2 rounded">
                     <span className="text-blue-300">Registro reciente:</span>
-                    <div className="flex justify-between text-xs"><span>Paciente: J.Pérez</span><span>FRAP-2409</span><span>Prioridad: Alta</span></div>
+                    <div className="flex justify-between text-xs">
+                      <span>Paciente: J.Pérez</span>
+                      <span>FRAP-2409</span>
+                      <span className="text-yellow-300">Prioridad: Alta</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -319,7 +348,7 @@ function App() {
           </div>
         </section>
 
-        {/* CONTACTO + GALERÍA + COMENTARIOS */}
+        {/* CONTACTO (sin Galería de Evidencias) */}
         <section id="contacto" className="py-20 bg-white">
           <div className="container mx-auto px-5 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 mb-12">
@@ -338,9 +367,6 @@ function App() {
                 </div>
               </div>
               <FormularioContacto titulo="Formulario de contacto" />
-            </div>
-            <div className="grid md:grid-cols-1 gap-12 mt-12">
-              <GaleriaImagenes />
             </div>
             <SistemaComentarios usuarioActual={usuarioLogueado} />
           </div>
