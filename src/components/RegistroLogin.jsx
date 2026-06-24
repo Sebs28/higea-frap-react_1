@@ -94,12 +94,18 @@ const RegistroLogin = ({ onLoginExitoso }) => {
       }
     }
 
+<<<<<<< HEAD
     // ===== URL DEL BACKEND EN RENDER  =====
     const API_URL = 'https://higea-backend.onrender.com/api/auth';
 
     const url = modo === 'registro'
       ? `${API_URL}/register`
       : `${API_URL}/login`;
+=======
+    const url = modo === 'registro'
+      ? 'http://localhost:5000/api/auth/register'
+      : 'http://localhost:5000/api/auth/login';
+>>>>>>> f5ae6e1f757b4c5d88e2593824d62a9a12b25483
 
     let body = {};
     if (modo === 'registro') {
@@ -138,6 +144,10 @@ const RegistroLogin = ({ onLoginExitoso }) => {
 
       if (modo === 'registro') {
         setMensajeExito('✅ Usuario registrado correctamente');
+<<<<<<< HEAD
+=======
+        // Limpiar campos
+>>>>>>> f5ae6e1f757b4c5d88e2593824d62a9a12b25483
         setNombre('');
         setApellidos('');
         setCorreo('');

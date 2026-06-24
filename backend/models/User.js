@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     ciudad: { type: String, required: true },
     rfc: { type: String, required: true },
     telefono: { type: String, required: true },
-    empresa: { type: String, default: '' },
+    empresa: { type: String, default: "" }
 }, { timestamps: true });
 
 export default mongoose.model("User", UserSchema);
